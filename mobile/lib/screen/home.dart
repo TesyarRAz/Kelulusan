@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                       Card(
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).pushReplacementNamed("/login");
+                            Navigator.of(context).pushReplacementNamed("/");
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -121,8 +121,8 @@ class _HomePageState extends State<HomePage> {
                           children: <Widget>[
                             Image.asset(
                               "assets/smea.png",
-                              height: 100,
-                              width: 100,
+                              height: 150,
+                              width: 150,
                             ),
                             SizedBox(height: 20,),
                             Text(

@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:kelulusan/model/user.dart';
 import 'package:kelulusan/screen/home.dart';
 import 'package:kelulusan/screen/login.dart';
-import 'package:kelulusan/screen/splash.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -16,8 +15,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.blue
         ),
         routes: {
-          "/" : (_) => SplashPage(),
-          "/login" : (_) => LoginPage(),
+          "/" : (_) => LoginPage(),
           "/home": (_) => HomePage()
         },
       ),

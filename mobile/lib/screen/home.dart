@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
                   width: MediaQuery.of(context).size.width,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: <Widget>[
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                                 Icon(Icons.file_download),
                                 SizedBox(width: 20,),
                                 Expanded(
-                                  child: Text('Anda Bisa Mendownload File Disini'),
+                                  child: Text('Surat Kelulusan'),
                                 )
                               ],
                             ),
@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                       Card(
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).pushReplacementNamed("/");
+                            Navigator.of(context).pushReplacementNamed("/login");
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
@@ -114,6 +114,23 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
+                      ),
+                      SizedBox(height: 100,),
+                      Center(
+                        child: Column(
+                          children: <Widget>[
+                            Image.asset(
+                              "assets/smea.png",
+                              height: 100,
+                              width: 100,
+                            ),
+                            SizedBox(height: 20,),
+                            Text(
+                              'Copyright @ SMKN 2 Kota Sukabumi',
+                              style: Theme.of(context).textTheme.body1
+                            )
+                          ],
+                        )
                       )
                     ],
                   ),
@@ -144,7 +161,7 @@ class _LulusComponentState extends State<_LulusComponent> with SingleTickerProvi
   void initState() {
     super.initState();
 
-    _animationController = AnimationController(vsync: this, duration: Duration(seconds: 10));
+    _animationController = AnimationController(vsync: this, duration: Duration(seconds: 4));
 
     _textAnimation = TextTween(widget.user.keterangan).animate(_animationController);
 

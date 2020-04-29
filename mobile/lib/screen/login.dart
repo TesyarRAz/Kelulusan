@@ -32,10 +32,18 @@ class _LoginState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(
-              Icons.supervised_user_circle,
-              size: 100,
+            Hero(
+              tag: "smea-icon",
+              child: Image.asset(
+                "assets/smea.png",
+                width: 100,
+                height: 100,
+              ),
             ),
+            // Icon(
+            //   Icons.supervised_user_circle,
+            //   size: 100,
+            // ),
             SizedBox(height: 10,),
             _buildUsername(),
             SizedBox(height: 10,),
@@ -81,6 +89,7 @@ class _LoginState extends State<LoginPage> {
     onPressed: () {
       showDialog(
         context: context,
+        barrierDismissible: false,
         builder: (_) => Dialog(
           child: Helper.createLoading(),
         )

@@ -32,7 +32,8 @@ class UserModel extends InheritedWidget {
   //   kompetensi: "Otomatisasi dan Keuangan Lembaga",
   //   nama: "Dewi Rubianti",
   //   nis: "11707290",
-  //   password: "11707290"
+  //   password: "11707290",
+  //   pdf: "https://facebook.com"
   // );
 
   @override

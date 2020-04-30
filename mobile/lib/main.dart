@@ -7,9 +7,10 @@ import 'package:kelulusan/screen/login.dart';
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
     return UserModel(
       child: MaterialApp(
-        title: "Iksan (Info Kelulusan)",
+        title: "Kelulusan",
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: Colors.blue

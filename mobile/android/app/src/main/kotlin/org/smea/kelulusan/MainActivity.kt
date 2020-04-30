@@ -1,4 +1,4 @@
-package com.example.kelulusan
+package org.smea.kelulusan
 
 import android.os.Bundle
 

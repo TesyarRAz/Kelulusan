@@ -36,8 +36,8 @@ class _LoginState extends State<LoginPage> {
               tag: "smea-icon",
               child: Image.asset(
                 "assets/smea.png",
-                width: 150,
-                height: 150,
+                width: 75,
+                height: 75,
               ),
             ),
             // Icon(
@@ -113,6 +113,15 @@ class _LoginState extends State<LoginPage> {
             )
           );
         }
+      })
+      .catchError((error) {
+        Navigator.of(context).pop();
+        showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+            content: Text("Terjadi masalah saat menghubungkan"),
+          )
+        );
       });
     },
   );

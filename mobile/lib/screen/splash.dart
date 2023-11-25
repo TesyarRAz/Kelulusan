@@ -11,12 +11,12 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 
     Future.delayed(Duration(seconds: 3), () async {
       Navigator.of(context).pushReplacementNamed("/login");
 
-      SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     });
   }
 

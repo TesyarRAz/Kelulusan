@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class User {
-  User({this.nis, this.nama, this.kompetensi, this.password, this.keterangan, this.pdf});
+  User({required this.nis, required this.nama, required this.kompetensi, required this.password, required this.keterangan, required this.pdf});
 
   String nis;
   String nama;
@@ -21,25 +21,23 @@ class User {
 }
 
 class UserModel extends InheritedWidget {
-  UserModel({Key key, Widget child}) : super(
+  UserModel({Key? key, required Widget child}) : super(
     key: key, 
     child: child
   );
 
-  User user;
-  // User user = User(
-  //   keterangan: "LULUS",
-  //   kompetensi: "Otomatisasi dan Keuangan Lembaga",
-  //   nama: "Dewi Rubianti",
-  //   nis: "11707290",
-  //   password: "11707290",
-  //   pdf: "https://facebook.com"
-  // );
+  User? user;
 
   @override
   bool updateShouldNotify(UserModel oldWidget) {
     return false;
   }
 
-  static UserModel of(BuildContext context) => context.inheritFromWidgetOfExactType(UserModel);
+  static UserModel? maybeOf(BuildContext context) => context.dependOnInheritedWidgetOfExactType<UserModel>();
+
+  static UserModel of(BuildContext context) {
+    var result = maybeOf(context);
+    assert(result != null, 'No UserModel found in context');
+    return result!;
+  }
 }

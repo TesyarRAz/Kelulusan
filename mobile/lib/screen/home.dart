@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final user = UserModel.of(context).user;
+    var user = UserModel.of(context).user!;
 
     return Scaffold(
       body: SafeArea(
@@ -51,11 +51,11 @@ class _HomePageState extends State<HomePage> {
                               SizedBox(height: 20),
                               Text(
                                 user.nama,
-                                style: Theme.of(context).textTheme.title,
+                                style: Theme.of(context).textTheme.titleLarge,
                               ),
                               Text(
                                 user.kompetensi,
-                                style: Theme.of(context).textTheme.subtitle.apply(
+                                style: Theme.of(context).textTheme.titleMedium?.apply(
                                   color: Colors.black54
                                 ),
                               ),
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                                 children: <Widget>[
                                   Text(
                                     'Anda Dinyatakan : ',
-                                    style: Theme.of(context).textTheme.body1,
+                                    style: Theme.of(context).textTheme.bodyLarge,
                                   ),
                                   _LulusComponent(user: user)
                                 ],
@@ -76,8 +76,8 @@ class _HomePageState extends State<HomePage> {
                       Card(
                         child: InkWell(
                           onTap: () async {
-                            if (await canLaunch(user.pdf)) {
-                              await launch(user.pdf);
+                            if (await canLaunchUrl(Uri.parse(user.pdf))) {
+                              await launchUrl(Uri.parse(user.pdf));
                             }
                           },
                           child: Container(
@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(height: 20,),
                             Text(
                               'Copyright @ SMKN 2 Kota Sukabumi',
-                              style: Theme.of(context).textTheme.body1
+                              style: Theme.of(context).textTheme.bodyLarge
                             )
                           ],
                         )
@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 class _LulusComponent extends StatefulWidget {
-  _LulusComponent({Key key, this.user}) : super(key: key);
+  _LulusComponent({Key? key, required this.user}) : super(key: key);
 
   final User user;
 
@@ -154,8 +154,8 @@ class _LulusComponent extends StatefulWidget {
 }
 
 class _LulusComponentState extends State<_LulusComponent> with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation _textAnimation;
+  late AnimationController _animationController;
+  late Animation _textAnimation;
 
   @override
   void initState() {
@@ -179,7 +179,7 @@ class _LulusComponentState extends State<_LulusComponent> with SingleTickerProvi
   Widget build(BuildContext context) {
     return Text(
       _textAnimation.value,
-      style: Theme.of(context).textTheme.body1.apply(
+      style: Theme.of(context).textTheme.bodyLarge?.apply(
         fontWeightDelta: 10
       ),
     );

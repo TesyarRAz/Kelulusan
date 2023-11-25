@@ -5,14 +5,14 @@ import 'package:http/http.dart' show Client;
 import 'package:kelulusan/model/user.dart';
 
 class Network {
-  static const BASE_URL = "http://192.168.43.14/kelulusan/";
-  static Network _instance;
+  static const BASE_URL = "http://192.168.43.14/kelulusan";
+  static Network? _instance;
 
   static Network get instance {
     // Jika instance null, assign kan objectnya
     _instance ??= Network._();
 
-    return _instance;
+    return _instance!;
   }
 
   final _client = new Client();
@@ -20,7 +20,7 @@ class Network {
 
   Future<dynamic> loginAndGetUserdata(String nis, String password) async {
     var response = await _client.post(
-      BASE_URL + "kelulusan.php",
+      Uri.parse(BASE_URL + "/kelulusan.php"),
       body: {
         'nis' : nis,
         'password' : password

@@ -9,10 +9,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginState extends State<LoginPage> {
-  TextEditingController _nis;
-  TextEditingController _password;
+  late TextEditingController _nis;
+  late TextEditingController _password;
 
-  bool _passwordShow;
+  late bool _passwordShow;
 
   @override
   void initState() {
@@ -84,7 +84,7 @@ class _LoginState extends State<LoginPage> {
     color: Theme.of(context).primaryColor,
     child: Text(
       'Login',
-      style: Theme.of(context).primaryTextTheme.body2,
+      style: Theme.of(context).primaryTextTheme.bodyMedium,
     ),
     onPressed: () {
       showDialog(

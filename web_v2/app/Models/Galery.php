@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Galery extends Model
 {
@@ -13,8 +14,14 @@ class Galery extends Model
 
     protected $guarded = ['id'];
 
+    protected $with = [
+        'kelas',
+        'angkatan',
+    ];
+
     protected $withCount = [
         'photos',
+        'likes',
     ];
 
     public function photos(): HasMany
@@ -30,5 +37,10 @@ class Galery extends Model
     public function angkatan(): BelongsTo
     {
         return $this->belongsTo(Angkatan::class);
+    }
+
+    public function likes(): MorphMany
+    {
+        return $this->morphMany(ModelLike::class, 'modelable');
     }
 }

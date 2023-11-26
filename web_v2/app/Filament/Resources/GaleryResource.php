@@ -55,10 +55,8 @@ class GaleryResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('kelas.name')
-                    ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('angkatan.id')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('angkatan.tahun')
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('photos.image')
                     ->stacked()

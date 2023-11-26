@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class PhotoLike extends Pivot
+class ModelLike extends Pivot
 {
-    public function photo(): BelongsTo
+    public function modelable(): MorphTo
     {
-        return $this->belongsTo(Photo::class);
+        return $this->morphTo();
     }
 
     public function user(): BelongsTo

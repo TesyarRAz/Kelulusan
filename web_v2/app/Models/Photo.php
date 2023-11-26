@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Photo extends Model
 {
@@ -29,9 +30,9 @@ class Photo extends Model
         return $this->belongsToMany(Tag::class)->using(PhotoTag::class);
     }
 
-    public function likes(): BelongsToMany
+    public function likes(): MorphMany
     {
-        return $this->belongsToMany(User::class)->using(PhotoLike::class);
+        return $this->morphMany(ModelLike::class, 'modelable');
     }
 
     public function users(): BelongsToMany

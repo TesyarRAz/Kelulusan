@@ -11,6 +11,11 @@ class Student extends Model
     use HasFactory;
     
     protected $guarded = ['id'];
+    
+    protected $with = [
+        'kelas',
+        'angkatan',
+    ];
 
     public function user(): BelongsTo
     {

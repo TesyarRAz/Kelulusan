@@ -99,10 +99,8 @@ class _LoginState extends State<LoginPage> {
       .then((result) {
         Navigator.of(context).pop();
         if (result is User) {
-          setState(() {
-            UserModel.of(context).user = result;
-            Navigator.of(context).pushReplacementNamed("/home");
-          });
+          UserModel.of(context).user = result;
+          Navigator.of(context).pushReplacementNamed("/home");
         } else {
           _nis.clear();
           _password.clear();
@@ -114,15 +112,6 @@ class _LoginState extends State<LoginPage> {
             )
           );
         }
-      })
-      .catchError((error) {
-        Navigator.of(context).pop();
-        showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-            content: Text("Terjadi masalah saat menghubungkan"),
-          )
-        );
       });
     },
   );

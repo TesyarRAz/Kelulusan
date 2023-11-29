@@ -28,7 +28,7 @@ class Network {
     );
 
     if (response.statusCode == 200) {
-      return User.fromJson(jsonDecode(response.body));
+      return User.fromJson(jsonDecode(response.body)['user']);
     }
     else if (response.statusCode == 401) {
       return "NIS atau password salah";

@@ -33,6 +33,11 @@ class UserController extends Controller
         
         auth()->login($user);
 
+        if ($user->hasRole('student'))
+        {
+            $user->load('student');
+        }
+
         $token = auth()->user()->createToken(config('app.name'))->plainTextToken;
 
         return response()->json([

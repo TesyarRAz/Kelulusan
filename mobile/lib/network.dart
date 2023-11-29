@@ -20,7 +20,7 @@ class Network {
 
   Future<dynamic> loginAndGetUserdata(String nis, String password) async {
     var response = await _client.post(
-      Uri.parse(BASE_URL + "/kelulusan.php"),
+      Uri.parse("${BASE_URL}/api/login"),
       body: {
         'nis' : nis,
         'password' : password
@@ -28,7 +28,7 @@ class Network {
     );
 
     if (response.statusCode == 200) {
-      return User.parseFromJson(jsonDecode(response.body));
+      return User.fromJson(jsonDecode(response.body));
     }
     else if (response.statusCode == 401) {
       return "NIS atau password salah";

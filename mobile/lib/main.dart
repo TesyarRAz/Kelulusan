@@ -3,11 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:kelulusan/model/user.dart';
 import 'package:kelulusan/screen/home.dart';
 import 'package:kelulusan/screen/login.dart';
+import 'package:kelulusan/widget/user_model.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     return UserModel(
       child: MaterialApp(
         title: "Kelulusan",

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kelulusan/helper.dart';
 import 'package:kelulusan/model/user.dart';
 import 'package:kelulusan/network.dart';
+import 'package:kelulusan/widget/user_model.dart';
 
 class LoginPage extends StatefulWidget {
   @override

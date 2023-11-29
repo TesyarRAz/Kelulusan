@@ -5,7 +5,7 @@ import 'package:http/http.dart' show Client;
 import 'package:kelulusan/model/user.dart';
 
 class Network {
-  static const BASE_URL = "http://192.168.43.14/kelulusan";
+  static const BASE_URL = "https://kelulusan.tesyarraz.my.id/api";
   static Network? _instance;
 
   static Network get instance {
@@ -20,7 +20,7 @@ class Network {
 
   Future<dynamic> loginAndGetUserdata(String nis, String password) async {
     var response = await _client.post(
-      Uri.parse("${BASE_URL}/api/login"),
+      Uri.parse("${BASE_URL}/login"),
       body: {
         'nis' : nis,
         'password' : password

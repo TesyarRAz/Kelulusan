@@ -19,7 +19,7 @@ class UserController extends Controller
         })
         ->when($credentials['nis'] != null, function ($query) use ($credentials) {
             $query->whereHas('student', function ($query) use ($credentials) {
-                $query->where('no_induk', $credentials['no_induk']);
+                $query->where('no_induk', $credentials['nis']);
             });
         })
         ->first();
@@ -29,7 +29,7 @@ class UserController extends Controller
                 'message' => 'Unauthorized'
             ], 401);
         }
-
+        
         auth()->login($user);
 
         $token = auth()->user()->createToken(config('app.name'))->plainTextToken;

@@ -13,11 +13,12 @@ class UserController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->all();
+
         $user = User::query()
-        ->when($credentials['email'] != null, function ($query) use ($credentials) {
+        ->when(isset($credentials['email']), function ($query) use ($credentials) {
             $query->where('email', $credentials['email']);
         })
-        ->when($credentials['nis'] != null, function ($query) use ($credentials) {
+        ->when(isset($credentials['nis']), function ($query) use ($credentials) {
             $query->whereHas('student', function ($query) use ($credentials) {
                 $query->where('no_induk', $credentials['nis']);
             });

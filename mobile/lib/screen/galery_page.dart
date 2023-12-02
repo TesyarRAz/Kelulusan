@@ -18,9 +18,18 @@ class _GaleryPageState extends State<GaleryPage> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        body: FutureBuilder<List<Photo>>(
-          future: Network.instance.getGaleries(token),
-        ),
+        body: ListView.builder(
+          itemCount: widget.galery.photos?.length ?? 0,
+          itemBuilder: (context, index) {
+            var photo = widget.galery.photos![index];
+            
+            return Column(
+              children: [
+                Image.network()
+              ],
+            )
+          },
+        )
       ),
     );
   }

@@ -15,6 +15,10 @@ class Photo extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'image' => PublicFileClientCast::class,
+    ];
+
     protected $withCount = [
         'likes',
         'tags',

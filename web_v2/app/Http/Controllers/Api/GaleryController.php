@@ -12,7 +12,9 @@ class GaleryController extends Controller
     public function index(Request $request)
     {
         $galery = Galery::select('galeries.*')
-        ->with('photos')
+        ->with([
+            'photos' => fn($query) => $query->withExists(['likes as like_by_you' => fn(Builder $query) => $query->where('user_id', auth()->id())]),
+        ])
         ->withExists(['likes as like_by_you' => fn(Builder $query) => $query->where('user_id', auth()->id())])
         ->where(fn($query) => $query
             ->when($request->has('angkatan'), fn(Builder $query) => $query->whereHas('angkatan', $request->angkatan))

@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' show Client;
 import 'package:kelulusan/model/galery.dart';
+import 'package:kelulusan/model/photo.dart';
 import 'package:kelulusan/model/user.dart';
 
 class Network {

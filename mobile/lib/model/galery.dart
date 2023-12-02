@@ -14,6 +14,7 @@ class Galery {
     this.kelas,
     this.angkatan,
     this.photos,
+    this.likeByYou,
   });
 
   Galery.fromJson(dynamic json) {
@@ -33,6 +34,7 @@ class Galery {
         photos?.add(Photo.fromJson(v));
       });
     }
+    likeByYou = json['like_by_you'];
   }
 
   num? id;
@@ -45,6 +47,7 @@ class Galery {
   Kelas? kelas;
   Angkatan? angkatan;
   List<Photo>? photos;
+  bool? likeByYou;
 
   Galery copyWith({
     num? id,
@@ -57,6 +60,7 @@ class Galery {
     Kelas? kelas,
     Angkatan? angkatan,
     List<Photo>? photos,
+    bool? likeByYou,
   }) =>
       Galery(
         id: id ?? this.id,
@@ -69,6 +73,7 @@ class Galery {
         kelas: kelas ?? this.kelas,
         angkatan: angkatan ?? this.angkatan,
         photos: photos ?? this.photos,
+        likeByYou: likeByYou ?? this.likeByYou,
       );
 
   Map<String, dynamic> toJson() {
@@ -89,6 +94,7 @@ class Galery {
     if (photos != null) {
       map['photos'] = photos?.map((v) => v.toJson()).toList();
     }
+    map['like_by_you'] = likeByYou;
     return map;
   }
 }

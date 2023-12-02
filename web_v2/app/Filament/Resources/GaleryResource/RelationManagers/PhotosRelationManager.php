@@ -22,7 +22,7 @@ class PhotosRelationManager extends RelationManager
                     ->image()
                     ->imageEditor()
                     ->disk('public')
-                    ->directory('galery/' . $this->getOwnerRecord()->galery_id)
+                    ->directory('galery/' . $this->getOwnerRecord()->id)
                     ->required(),
             ]);
     }

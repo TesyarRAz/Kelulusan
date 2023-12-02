@@ -77,3 +77,10 @@ class User {
     return map;
   }
 }
+
+class UserLogin {
+  User user;
+  String token;
+
+  UserLogin({required this.user, required this.token});
+}

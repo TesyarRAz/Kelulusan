@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kelulusan/helper.dart';
 import 'package:kelulusan/model/user.dart';
 import 'package:kelulusan/network.dart';
-import 'package:kelulusan/widget/user_model.dart';
+import 'package:kelulusan/provider/user_model.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -96,10 +98,10 @@ class _LoginState extends State<LoginPage> {
         )
       );
       Network.instance.loginAndGetUserdata(_nis.text, _password.text)
-      .then((result) {
+      .then((result) async {
         Navigator.of(context).pop();
-        if (result is User) {
-          UserModel.of(context).user = result;
+        if (result is UserLogin) {
+          Provider.of<UserModel>(context, listen: false).user = result;
           Navigator.of(context).pushReplacementNamed("/home");
         } else {
           _nis.clear();

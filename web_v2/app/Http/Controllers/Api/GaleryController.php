@@ -13,6 +13,7 @@ class GaleryController extends Controller
     {
         $galery = Galery::select('galeries.*')
         ->with('photos')
+        ->withExists(['likes as like_by_you' => fn(Builder $query) => $query->where('user_id', auth()->id())])
         ->where(fn($query) => $query
             ->when($request->has('angkatan'), fn(Builder $query) => $query->whereHas('angkatan', $request->angkatan))
             ->when($request->has('kelas'), fn(Builder $query) => $query->whereHas('kelas', $request->kelas))

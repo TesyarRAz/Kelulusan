@@ -79,4 +79,48 @@ class Network {
 
     return [];
   }
+
+  Future<bool> likeGalery(int galeryId, String token) async {
+    var response = await _client.post(
+        Uri.parse("${BASE_URL}/galery/${galeryId}/like"),
+        headers: {
+          'Authorization': 'Bearer ${token}',
+        }
+    );
+
+    return response.statusCode == 200;
+  }
+
+  Future<bool> unlikeGalery(int galeryId, String token) async {
+    var response = await _client.delete(
+        Uri.parse("${BASE_URL}/galery/${galeryId}/like"),
+        headers: {
+          'Authorization': 'Bearer ${token}',
+        }
+    );
+
+    return response.statusCode == 200;
+  }
+
+  Future<bool> likePhoto(int photoId, String token) async {
+    var response = await _client.post(
+        Uri.parse("${BASE_URL}/photo/${photoId}/like"),
+        headers: {
+          'Authorization': 'Bearer ${token}',
+        }
+    );
+
+    return response.statusCode == 200;
+  }
+
+  Future<bool> unlikePhoto(int photoId, String token) async {
+    var response = await _client.delete(
+        Uri.parse("${BASE_URL}/photo/${photoId}/like"),
+        headers: {
+          'Authorization': 'Bearer ${token}',
+        }
+    );
+
+    return response.statusCode == 200;
+  }
 }

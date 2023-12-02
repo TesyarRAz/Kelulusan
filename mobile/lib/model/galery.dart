@@ -14,6 +14,7 @@ class Galery {
     this.kelas,
     this.angkatan,
     this.photos,
+    this.likesCount,
     this.likeByYou,
   });
 
@@ -34,6 +35,7 @@ class Galery {
         photos?.add(Photo.fromJson(v));
       });
     }
+    likesCount = json['likes_count'];
     likeByYou = json['like_by_you'];
   }
 
@@ -47,6 +49,7 @@ class Galery {
   Kelas? kelas;
   Angkatan? angkatan;
   List<Photo>? photos;
+  num? likesCount;
   bool? likeByYou;
 
   Galery copyWith({
@@ -60,6 +63,7 @@ class Galery {
     Kelas? kelas,
     Angkatan? angkatan,
     List<Photo>? photos,
+    num? likesCount,
     bool? likeByYou,
   }) =>
       Galery(
@@ -73,6 +77,7 @@ class Galery {
         kelas: kelas ?? this.kelas,
         angkatan: angkatan ?? this.angkatan,
         photos: photos ?? this.photos,
+        likesCount: likesCount ?? this.likesCount,
         likeByYou: likeByYou ?? this.likeByYou,
       );
 
@@ -94,6 +99,7 @@ class Galery {
     if (photos != null) {
       map['photos'] = photos?.map((v) => v.toJson()).toList();
     }
+    map['likes_count'] = likesCount;
     map['like_by_you'] = likeByYou;
     return map;
   }

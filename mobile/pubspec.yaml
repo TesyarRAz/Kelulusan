@@ -25,8 +25,10 @@ dependencies:
   cupertino_icons:
   http:
   url_launcher:
-  provider: ^6.1.1
-  shared_preferences: ^2.2.2
+  provider:
+  shared_preferences:
+  font_awesome_flutter:
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:

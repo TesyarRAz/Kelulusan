@@ -20,8 +20,8 @@ class Galery extends Model
     ];
 
     protected $withCount = [
-        'photos',
         'likes',
+        'photos',
     ];
 
     public function photos(): HasMany
